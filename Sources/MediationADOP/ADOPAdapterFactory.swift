@@ -6,7 +6,7 @@ public final class ADOPAdapterFactory: NSObject, APSSPAdapterFactory {
 
     public static var networkID: Int { 24 }
     public static var sdkVersion: String? { ADOPInitializationAdapter().sdkVersion }
-    public static var adapterVersion: String? { "12.12.0.0" }
+    public static var adapterVersion: String? { "12.13.0.0" }
 
     public static func makeInitializationAdapter() -> AnyObject? {
         return ADOPInitializationAdapter()
