@@ -13,7 +13,7 @@ import GoogleMobileAds
 
 final class ADOPMediationInterstitialAd: NSObject {
     
-    var delegate: APSSPInterstitialAdapterDelegate?
+    weak var delegate: APSSPInterstitialAdapterDelegate?
     
     private var interstitial: AdManagerInterstitialAd?
     
@@ -65,7 +65,7 @@ extension ADOPMediationInterstitialAd: FullScreenContentDelegate {
     
     public func ad(_ ad: FullScreenPresentingAd, didFailToPresentFullScreenContentWithError error: Error) {
         APLogger.error("ADOP Interstitial Error: \(error.localizedDescription)")
-        delegate?.interstitialLoadFail(error: .nextMediation, errorMessage: error.localizedDescription)
+        delegate?.interstitialShowFail(message: error.localizedDescription)
     }
     
     public func adDidRecordClick(_ ad: FullScreenPresentingAd) {

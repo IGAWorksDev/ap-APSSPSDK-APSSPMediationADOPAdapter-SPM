@@ -7,13 +7,17 @@ import UIKit
 import APSSPSDK
 
 final public class ADOPVideoMixAdapter: APSSPVideoMixAdAdapterProtocol {
-    public var rootViewController: UIViewController?
-    public var videoMixDelegate: APSSPVideoMixAdAdapterDelegate?
+    public weak var rootViewController: UIViewController?
+    public weak var videoMixDelegate: APSSPVideoMixAdAdapterDelegate?
     public var videoMixAdType: APSSPVideoMixAdType = .RewardVideo
     private var placementDic: [String: String] = [:]
     private var interstitialAdapter: ADOPInterstitialAdapter?
     private var interstitialVideoAdapter: ADOPInterstitialVideoAdapter?
     private var rewardVideoAdapter: ADOPRewardVideoAdapter?
+
+    deinit {
+        APLogger.debug("ADOPVideoMixAdapter deinit")
+    }
 
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String: Any?]) {
         self.placementDic = placementDic

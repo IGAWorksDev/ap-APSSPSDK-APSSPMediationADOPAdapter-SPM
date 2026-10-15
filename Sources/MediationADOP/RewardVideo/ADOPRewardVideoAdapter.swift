@@ -11,12 +11,16 @@ import APSSPSDK
 
 
 final public class ADOPRewardVideoAdapter: APSSPRewardVideoAdapterProtocol {
-    public var rootViewController: UIViewController?
+    public weak var rootViewController: UIViewController?
 
     private var rewardVideoAd: ADOPMediationRewardVideoAd?
     
-    public var delegate: APSSPRewardVideoAdapterDelegate?
+    public weak var delegate: APSSPRewardVideoAdapterDelegate?
     
+    deinit {
+        APLogger.debug("ADOPRewardVideoAdapter deinit")
+    }
+
     public init(placementDic: [String: String], rootViewController: UIViewController?, info: [String : Any?]) {
         let placementId = placementDic[APSSPPlacementKey.adUnitID.rawValue] ?? ""
         rewardVideoAd = ADOPMediationRewardVideoAd(placementId: placementId, rootViewController: rootViewController)
